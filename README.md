@@ -23,33 +23,58 @@ Displayed temperature range is constrained between -12°C and 32°C.
 'Cold' zone begins at 0°C, 'hot' zone at 20°C. If your Watchy shows that the temperature is in those zones, make sure to switch into the right gear or boost your temperature resistance by consuming the appropriate food or medicine.  
 With no WiFi, the temperature gotten from the last API call is displayed until there's a connection again. Default was to show the RTC temperature sensor's data, which only made sense for me if it's about 30°C outside.
 - Display WiFi connectivity state using the Sheika sensor symbol. There's just 'on' or 'off'.
+- Display step count in the upper right, reset at midnight local time.
 
 ## Upload instructions
 
-### I did not use Arduino IDE
+### Using the Arduino IDE
 
-I implemented BotWatchy using the [platformIO](https://platformio.org/) extension for VS Code, as I can't bear coding in the Arduino IDE anymore. I'm reasonably certain you can just clone this repo and open the project in any platformIO enabled IDE. All necessary dependencies should be installed automatically.  
-I even added a `min_spiffs.csv` file and referenced it in the `platformio.ini`, which I think assures the compiler there's enough space on the ESP32 for all those bitmaps and stuff.  
-What I want to say is: it's entirely possible platformIO will just compile and upload the code to your Watchy (but see right below first!).
+This code is, for the most part, fully compatible to the Arduino IDE. Included is a fork that does so, built partially by Frankensteining the code together with project files from https://github.com/b-bayport/watchy_captnwednesday
+
+I recommend using this fork if you're building for the latest version of Watchy (revision 3.x from 2021), since the original code is for ESP32 instead of ESP32-S3. You'll want to follow the instructions below to add your own API key for weather data, but it should just work thereafter. 
+
+### Using Visual Studio Code
+
+From the original author of this watchface:
+
+> I implemented BotWatchy using the [platformIO](https://platformio.org/) extension for VS Code, as I can't bear coding in the Arduino IDE anymore. I'm reasonably certain you can just clone this repo and open the project in any platformIO enabled IDE. All necessary dependencies should be installed automatically.  
+>
+> I even added a `min_spiffs.csv` file and referenced it in the `platformio.ini`, which I think assures the compiler there's enough space on the ESP32 for all those bitmaps and stuff.  
+> What I want to say is: it's entirely possible platformIO will just compile and upload the code to your Watchy (but see right below first!).
+
+While working on this fork, I discovered this only worked on the 2.0 revision of the platform, and I had a heck of a time wrangling dependencies to make it all work. It did eventually build and flash successfully, so props for that!
+I included my own build dependencies in the `platformio.ini` file, but this is less tested than the 3.0 fork for Arduino IDE happens to be.
 
 ### Your API key and location data
 
-The Watchy library's authors apparently are way nicer people than I am, so they left their openweathermap.org API key in the code. I'm not that nice, so you'll have to use your own. Additionally, I don't want everybody to know my location, so what I did was I put my API key and location data into a file called `include/secrets.h`, included it in `src/BotWatchy.h` aaand... also added it to the `.gitignore`.  
-I added a `include/secrets_template.h`, though, which you may copy as `include/secrets.h` and add your information to.
+From the original watchface author:
+
+> The Watchy library's authors apparently are way nicer people than I am, so they left their openweathermap.org API key in the code. I'm not that nice, so you'll have to use your own. Additionally, I don't want everybody to know my location, so what I did was I put my API key and location data into a file called `include/secrets.h`, included it in `src/BotWatchy.h` aaand... also added it to the `.gitignore`.  
+> I added a `include/secrets_template.h`, though, which you may copy as `include/secrets.h` and add your information to.
+
+I'm a bit nicer, in that I set up a file that will work out of the box with the weather disabled. You'll still need to edit the file to make weather work, however.
 
 ### You want to change, modify or break the icons?
 
-All used image assets are provided in the `assets` folder. Modify them to your heart's content and then use [image2cpp tool](http://javl.github.io/image2cpp/) to convert them. Make sure you tick 'Invert image colors', as I made the colors the wrong way around.  
-I commented out the code related to the 'Array of all bitmaps for convenience' in the output code, as it was causing me inconvenience.
+From the original watchface author:
 
-The UI font's original files are not included. See [here](https://www.reddit.com/r/zelda/comments/5txuba/breath_of_the_wild_ui_font/) for source. I let some online tool convert it to .ttf and then used [truetype2gfx](https://rop.nl/truetype2gfx/) to convert to C code.
+> All used image assets are provided in the `assets` folder. Modify them to your heart's content and then use [image2cpp tool](http://javl.github.io/image2cpp/) to convert them. Make sure you tick 'Invert image colors', as I made the colors the wrong way around.  
+> I commented out the code related to the 'Array of all bitmaps for convenience' in the output code, as it was causing me inconvenience.
+>
+> The UI font's original files are not included. See [here](https://www.reddit.com/r/zelda/comments/5txuba/breath_of_the_wild_ui_font/) for source. I let some online tool convert it to .ttf and then used [truetype2gfx](https://rop.nl/truetype2gfx/) to convert to C code.
 
-## Thanks and contributions
+## Thanks and contributions (from the original author)
 
 ### Zelda BOTW UI Kit by Hunter Paramore
 
-Although I added some stuff on my own, I heavily relied on this amazing Zelda BotW UI Kit done in Figma. I was really happy I didn't have to create all the graphics I used from scratch. So thanks to some internet person apparently named 'Hunter Paramore'. Here's a link to their [Figma profile](https://www.figma.com/@hparamore).
+From the original watchface author:
+> Although I added some stuff on my own, I heavily relied on this amazing Zelda BotW UI Kit done in Figma. I was really happy I didn't have to create all the graphics I used from scratch. So thanks to some internet person apparently named 'Hunter Paramore'. Here's a link to their [Figma profile](https://www.figma.com/@hparamore).
 
 ### Calamity Sans
 
-For the UI font, I was able to use 'Calamity Sans' by reddit user [75thTrombone](https://www.reddit.com/user/75thTrombone/). I'd love to credit them in some way, but all I know of is this [reddit post](https://www.reddit.com/r/zelda/comments/5txuba/breath_of_the_wild_ui_font/).
+For the UI font, I was able to use #'Calamity Sans' by reddit user [75thTrombone](https://www.reddit.com/user/75thTrombone/). I'd love to credit them in some way, but all I know of is this [reddit post](https://www.reddit.com/r/zelda/comments/5txuba/breath_of_the_wild_ui_font/).
+
+## Thanks and contributions (added)
+### mehtmehtsen
+
+For providing a high quality watchface that this fork is based off of. I just wanted to get it working for my own personal use, and figured it made sense to share the fixes back to the community so more folks can use this. <3
