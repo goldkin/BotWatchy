@@ -43,7 +43,8 @@ From the original author of this watchface:
 > What I want to say is: it's entirely possible platformIO will just compile and upload the code to your Watchy (but see right below first!).
 
 While working on this fork, I discovered this only worked on the 2.0 revision of the platform, and I had a heck of a time wrangling dependencies to make it all work. It did eventually build and flash successfully, so props for that!
-I included my own build dependencies in the `platformio.ini` file, but this is less tested than the 3.0 fork for Arduino IDE happens to be.
+
+I included my own build dependencies in the `platformio.ini` file, but this is less tested than the 3.0 fork to Arduino IDE happens to be. Caveat emptor on those continuing to build successfully.
 
 ### Your API key and location data
 
