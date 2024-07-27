@@ -55,7 +55,7 @@ From the original watchface author:
 > The Watchy library's authors apparently are way nicer people than I am, so they left their openweathermap.org API key in the code. I'm not that nice, so you'll have to use your own. Additionally, I don't want everybody to know my location, so what I did was I put my API key and location data into a file called `include/secrets.h`, included it in `src/BotWatchy.h` aaand... also added it to the `.gitignore`.  
 > I added a `include/secrets_template.h`, though, which you may copy as `include/secrets.h` and add your information to.
 
-Copying secrets_template.h to secrets.h should work out of the box in this version as well, and I also added the same file to .gitignore for the ported 3.x version.
+Copying secrets_template.h to secrets.h should work out of the box in this version as well (note: these are now in src/ and top level of the 3.x project), and I also added the same file to .gitignore for the ported 3.x version.
 
 In case it's not clear: this is so you don't check in files that include your physical location and API keys. You'll want to keep the project structured this way, trust me.
 
