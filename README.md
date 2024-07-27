@@ -75,7 +75,8 @@ From the original watchface author:
 
 ### Calamity Sans
 
-For the UI font, I was able to use #'Calamity Sans' by reddit user [75thTrombone](https://www.reddit.com/user/75thTrombone/). I'd love to credit them in some way, but all I know of is this [reddit post](https://www.reddit.com/r/zelda/comments/5txuba/breath_of_the_wild_ui_font/).
+From the original watchface author:
+> For the UI font, I was able to use #'Calamity Sans' by reddit user [75thTrombone](https://www.reddit.com/user/75thTrombone/). I'd love to credit them in some way, but all I know of is this [reddit post](https://www.reddit.com/r/zelda/comments/5txuba/breath_of_the_wild_ui_font/).
 
 ## Thanks and contributions (added)
 ### mehtmehtsen
