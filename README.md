@@ -55,7 +55,7 @@ From the original watchface author:
 > The Watchy library's authors apparently are way nicer people than I am, so they left their openweathermap.org API key in the code. I'm not that nice, so you'll have to use your own. Additionally, I don't want everybody to know my location, so what I did was I put my API key and location data into a file called `include/secrets.h`, included it in `src/BotWatchy.h` aaand... also added it to the `.gitignore`.  
 > I added a `include/secrets_template.h`, though, which you may copy as `include/secrets.h` and add your information to.
 
-I'm a bit nicer, in that I set up a file that will work out of the box with the weather disabled. You'll still need to edit the file to make weather work, however.
+I'm a bit nicer, in that I set up a file that will work out of the box with the weather features disabled instead of having to move this file for the project to build at all. You'll still need to add your own API key to make weather work, however.
 
 ### You want to change, modify or break the icons?
 
