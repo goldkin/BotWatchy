@@ -1,4 +1,4 @@
-#include <BotWatchy.h>
+#include "BotWatchy.h"
 
 const int posHeart0X = 10;
 const int posHeart0Y = 10;
@@ -284,7 +284,7 @@ weatherDataOneCall BotWatchy::getWeatherData()
     { //Use Weather API for live data if WiFi is connected
       HTTPClient http;
       http.setConnectTimeout(3000); //3 second max timeout
-      String weatherQueryURL = String("https://api.openweathermap.org/data/2.5/onecall?lat=") + String(LAT) + String("&lon=") + String(LON) + String("&exclude=minutely,hourly,alerts&units=metric&appid=") + String(OPENWEATHERMAP_APIKEY);
+      String weatherQueryURL = String("https://api.openweathermap.org/data/2.5/onecall?lat=<add your lat here>&lon=<add your lon here>&exclude=minutely,hourly,alerts&units=metric&appid=<add your key here>");
       http.begin(weatherQueryURL.c_str());
       int httpResponseCode = http.GET();
       if (httpResponseCode == 200)

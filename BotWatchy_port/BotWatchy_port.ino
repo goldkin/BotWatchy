@@ -1,7 +1,6 @@
 #include <Arduino.h>
-#include <BotWatchy.h>
+#include "BotWatchy.h"
 #include "settings.h"
-#include "watchysettings.h"
 
 BotWatchy watchy(settings);
 
