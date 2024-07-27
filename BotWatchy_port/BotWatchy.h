@@ -5,7 +5,7 @@
 #include "include/images.h"
 #include "include/Calamity_Bold18pt7b.h"
 #include "include/Calamity_Bold8pt7b.h"
-#include "settings.h"
+#include "secrets.h"
 
 typedef struct weatherDataOneCall{
   boolean invalid;
