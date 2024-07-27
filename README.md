@@ -57,6 +57,10 @@ From the original watchface author:
 
 I'm a bit nicer, in that I set up a file that will work out of the box with the weather features disabled instead of having to move this file for the project to build at all. You'll still need to add your own API key to make weather work, however.
 
+**Note that in addition to modifying your location in [settings.h](https://github.com/goldkin/BotWatchy/blob/1642517c5363d6d88af053d486bba4f0aa087a76/src/settings.h), you will also need to update the call in the code here: https://github.com/goldkin/BotWatchy/blob/1642517c5363d6d88af053d486bba4f0aa087a76/src/BotWatchy.cpp#L287**
+
+I'm not sure if this worked in the original project, but I had to update it in both places, after which it works fine. Eventually I'd like to unify these variables, but this is a glorified hack on a fork, so one step at a time.
+
 ### You want to change, modify or break the icons?
 
 From the original watchface author:
