@@ -7,6 +7,8 @@ It is inspired by the HUD of 'The Legend of Zelda - Breath of the Wild' (BotW). 
 
 The idea was to apply the in-game HUD to RL, as it turned out BotW's HUD elements make an excellent way of displaying the data Watchy can provide.
 
+**Caveat emptor: this is a fork off the main to get this working for my own devices, and so others aren't left head scratching on getting this code working for themselves.**
+
 ## Features
 
 - Display battery state as hearts (with support for quarter hearts, just as in-game).
@@ -23,17 +25,17 @@ Displayed temperature range is constrained between -12°C and 32°C.
 'Cold' zone begins at 0°C, 'hot' zone at 20°C. If your Watchy shows that the temperature is in those zones, make sure to switch into the right gear or boost your temperature resistance by consuming the appropriate food or medicine.  
 With no WiFi, the temperature gotten from the last API call is displayed until there's a connection again. Default was to show the RTC temperature sensor's data, which only made sense for me if it's about 30°C outside.
 - Display WiFi connectivity state using the Sheika sensor symbol. There's just 'on' or 'off'.
-- Display step count in the upper right, reset at midnight local time.
+- (New!) Display step count in the upper right, reset at midnight local time.
 
 ## Upload instructions
 
-### Using the Arduino IDE
+### Using the Arduino IDE (Watchy 3.x)
 
-This code is, for the most part, fully compatible to the Arduino IDE. Included is a fork that does so, built partially by Frankensteining the code together with project files from https://github.com/b-bayport/watchy_captnwednesday
+This code is, for the most part, fully compatible with the Arduino IDE. Included is a fork that does so, built partially by Frankensteining the code together with project files from https://github.com/b-bayport/watchy_captnwednesday
 
-I recommend using this fork if you're building for the latest version of Watchy (revision 3.x from 2021), since the original code is for ESP32 instead of ESP32-S3. You'll want to follow the instructions below to add your own API key for weather data, but it should just work thereafter. 
+I recommend using this fork if you're building for the latest version of Watchy (revision 3.x), since the original code is for ESP32 instead of ESP32-S3. You'll want to follow the instructions below to add your own API key for weather data, but it should just work thereafter. 
 
-### Using Visual Studio Code
+### Using Visual Studio Code (Watchy 2.x)
 
 From the original author of this watchface:
 
@@ -42,7 +44,7 @@ From the original author of this watchface:
 > I even added a `min_spiffs.csv` file and referenced it in the `platformio.ini`, which I think assures the compiler there's enough space on the ESP32 for all those bitmaps and stuff.  
 > What I want to say is: it's entirely possible platformIO will just compile and upload the code to your Watchy (but see right below first!).
 
-While working on this fork, I discovered this only worked on the 2.0 revision of the platform, and I had a heck of a time wrangling dependencies to make it all work. It did eventually build and flash successfully, so props for that!
+While working on this fork, I discovered the old version had significant dependency hell to reconcile, and I had a heck of a time wrangling dependencies to make it all work. It did eventually build and flash successfully to my 2.x watchy, so props for that!
 
 I included my own build dependencies in the `platformio.ini` file, but this is less tested than the 3.0 fork to Arduino IDE happens to be. Caveat emptor on those continuing to build successfully.
 
