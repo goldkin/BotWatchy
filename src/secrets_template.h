@@ -2,6 +2,7 @@
 #define SETTINGS_H
 
 //This version needs lat/lon for the API to work in BotWatchy.cpp
+//Use an approximate location so your exact location cannot leak!
 #define LAT "40.6896663"
 #define LON "-74.0457517"
 
