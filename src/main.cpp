@@ -1,7 +1,8 @@
 #include <Arduino.h>
 #include <BotWatchy.h>
+#include "settings.h"
 
-BotWatchy watchy;
+BotWatchy watchy(settings);
 
 void setup() {
   watchy.init();

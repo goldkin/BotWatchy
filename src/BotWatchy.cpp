@@ -1,4 +1,4 @@
-#include "BotWatchy.h"
+#include <BotWatchy.h>
 
 const int posHeart0X = 10;
 const int posHeart0Y = 10;
@@ -28,11 +28,6 @@ const float VOLTAGE_RANGE = 0.9;
 RTC_DATA_ATTR int weatherIntervalCounterOneCall = WEATHER_UPDATE_INTERVAL;
 RTC_DATA_ATTR weatherDataOneCall currentWeatherOneCall;
 
-BotWatchy::BotWatchy()
-{
-  // Serial.begin(115200);
-}
-
 void BotWatchy::drawWatchFace()
 {
   display.fillScreen(GxEPD_WHITE);
@@ -45,6 +40,7 @@ void BotWatchy::drawWatchFace()
   drawWeather();
   drawBattery();
   drawWifi();
+  drawSteps();
 }
 
 void BotWatchy::drawTime()
@@ -179,6 +175,29 @@ void BotWatchy::drawBattery()
   }
 }
 
+void BotWatchy::drawSteps()
+{
+  int16_t x1, y1;
+  uint16_t w, h;
+  String textstringsteps;
+  uint32_t stepCount = sensor.getCounter();
+
+  if (currentTime.Hour == 0 && currentTime.Minute == 0){
+    sensor.resetStepCounter();
+  }
+
+  display.setFont(&Calamity_Bold8pt7b);
+
+  textstringsteps = String(stepCount);
+  display.getTextBounds(textstringsteps, 0, 0, &x1, &y1, &w, &h);
+
+  display.drawFastHLine(144 - w,24, 40, GxEPD_WHITE);
+  display.setCursor(145 - w, 24);
+  display.print("Steps");
+  display.setCursor(198 - w, 24);
+  display.println(textstringsteps);
+}
+
 void BotWatchy::drawWeather()
 {
   weatherDataOneCall currentWeatherOneCall = getWeatherData();
@@ -265,7 +284,7 @@ weatherDataOneCall BotWatchy::getWeatherData()
     { //Use Weather API for live data if WiFi is connected
       HTTPClient http;
       http.setConnectTimeout(3000); //3 second max timeout
-      String weatherQueryURL = String("https://api.openweathermap.org/data/2.5/onecall?lat=") + String(LAT) + String("&lon=") + String(LON) + String("&exclude=minutely,hourly,alerts&units=metric&appid=") + String(OWN_API_KEY);
+      String weatherQueryURL = String("https://api.openweathermap.org/data/2.5/onecall?lat=<add your lat here>&lon=<add your lon here>&exclude=minutely,hourly,alerts&units=metric&appid=<add your key here>");
       http.begin(weatherQueryURL.c_str());
       int httpResponseCode = http.GET();
       if (httpResponseCode == 200)
