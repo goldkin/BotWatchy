@@ -55,11 +55,9 @@ From the original watchface author:
 > The Watchy library's authors apparently are way nicer people than I am, so they left their openweathermap.org API key in the code. I'm not that nice, so you'll have to use your own. Additionally, I don't want everybody to know my location, so what I did was I put my API key and location data into a file called `include/secrets.h`, included it in `src/BotWatchy.h` aaand... also added it to the `.gitignore`.  
 > I added a `include/secrets_template.h`, though, which you may copy as `include/secrets.h` and add your information to.
 
-I'm a bit nicer, in that I set up a file that will work out of the box with the weather features disabled instead of having to move this file for the project to build at all. You'll still need to add your own API key to make weather work, however.
+Copying secrets_template.h to secrets.h should work out of the box in this version as well, and I also added the same file to .gitignore for the ported 3.x version.
 
-**Note that in addition to modifying your location in [settings.h](https://github.com/goldkin/BotWatchy/blob/1642517c5363d6d88af053d486bba4f0aa087a76/src/settings.h), you will also need to update the call in the code here: https://github.com/goldkin/BotWatchy/blob/1642517c5363d6d88af053d486bba4f0aa087a76/src/BotWatchy.cpp#L287**
-
-I'm not sure if this worked in the original project, but I had to update it in both places, after which it works fine. Eventually I'd like to unify these variables, but this is a glorified hack on a fork, so one step at a time.
+In case it's not clear: this is so you don't check in files that include your physical location and API keys. You'll want to keep the project structured this way, trust me.
 
 ### You want to change, modify or break the icons?
 
