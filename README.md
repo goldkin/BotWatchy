@@ -25,7 +25,7 @@ Displayed temperature range is constrained between -12°C and 32°C.
 'Cold' zone begins at 0°C, 'hot' zone at 20°C. If your Watchy shows that the temperature is in those zones, make sure to switch into the right gear or boost your temperature resistance by consuming the appropriate food or medicine.  
 With no WiFi, the temperature gotten from the last API call is displayed until there's a connection again. Default was to show the RTC temperature sensor's data, which only made sense for me if it's about 30°C outside.
 - Display WiFi connectivity state using the Sheika sensor symbol. There's just 'on' or 'off'.
-- (New!) Display step count in the upper right, reset at midnight local time.
+- (New!) Display step count in the upper right, reset at midnight local time. This isn't shown in the image above, but it works on this fork!
 
 ## Upload instructions
 
@@ -33,7 +33,7 @@ With no WiFi, the temperature gotten from the last API call is displayed until t
 
 This code is, for the most part, fully compatible with the Arduino IDE. Included is a fork that does so, built partially by Frankensteining the code together with project files from https://github.com/b-bayport/watchy_captnwednesday
 
-I recommend using this fork if you're building for the latest version of Watchy (revision 3.x), since the original code is for ESP32 instead of ESP32-S3. You'll want to follow the instructions below to add your own API key for weather data, but it should just work thereafter. 
+I recommend using this fork if you're building for the latest version of Watchy (revision 3.x), since the original code is for ESP32 instead of ESP32-S3. You'll want to follow the instructions from https://watchy.sqfmi.com/docs/getting-started/ and its code examples, then the instructions below to add your own API key for weather data. It should just work thereafter.
 
 ### Using Visual Studio Code (Watchy 2.x)
 
