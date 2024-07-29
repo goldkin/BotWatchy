@@ -4,4 +4,3 @@
 .vscode/launch.json
 .vscode/ipch
 /src/secrets.h
-/BotWatchy_port/secrets.h
