@@ -282,6 +282,10 @@ weatherDataOneCall BotWatchy::getWeatherData()
   { //only update if WEATHER_UPDATE_INTERVAL has elapsed i.e. 30 minutes
     if (connectWiFi())
     { //Use Weather API for live data if WiFi is connected
+      if (NTP_AUTO_SYNC == true)
+      {
+        syncNTP(); // Uncomment to sync NTP automatically when the weather is updated
+      }
       HTTPClient http;
       http.setConnectTimeout(3000); //3 second max timeout
       String weatherQueryURL = String("https://api.openweathermap.org/data/2.5/onecall?lat=") + String(LAT) + String("&lon=") + String(LON) + String("&exclude=minutely,hourly,alerts&units=metric&appid=") + String(OPENWEATHERMAP_APIKEY);

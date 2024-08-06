@@ -26,6 +26,7 @@ Displayed temperature range is constrained between -12°C and 32°C.
 With no WiFi, the temperature gotten from the last API call is displayed until there's a connection again. Default was to show the RTC temperature sensor's data, which only made sense for me if it's about 30°C outside.
 - Display WiFi connectivity state using the Sheika sensor symbol. There's just 'on' or 'off'.
 - (New!) Display step count in the upper right, reset at midnight local time. This isn't shown in the image above, but it works on this fork!
+- (New!) Option to auto-sync NTP when the weather updates and a network connection is available. Off by default, since this will override any manually set time.
 
 ## Upload instructions
 

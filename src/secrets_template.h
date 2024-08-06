@@ -15,5 +15,6 @@
 //NTP Settings
 #define NTP_SERVER "pool.ntp.org"
 #define GMT_OFFSET_SEC 3600 * -5 //New York is UTC -5 EST, -4 EDT, will be overwritten by weather data
+#define NTP_AUTO_SYNC false //If true, will automatically sync time to NTP when the weather updates
 
 #endif
