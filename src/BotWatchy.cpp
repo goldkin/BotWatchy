@@ -288,7 +288,7 @@ weatherDataOneCall BotWatchy::getWeatherData()
       }
       HTTPClient http;
       http.setConnectTimeout(3000); //3 second max timeout
-      String weatherQueryURL = String("https://api.openweathermap.org/data/2.5/onecall?lat=") + String(LAT) + String("&lon=") + String(LON) + String("&exclude=minutely,hourly,alerts&units=metric&appid=") + String(OPENWEATHERMAP_APIKEY);
+      String weatherQueryURL = String("https://api.openweathermap.org/data/3.0/onecall?lat=") + String(LAT) + String("&lon=") + String(LON) + String("&exclude=minutely,hourly,alerts&units=metric&appid=") + String(OPENWEATHERMAP_APIKEY);
       http.begin(weatherQueryURL.c_str());
       int httpResponseCode = http.GET();
       if (httpResponseCode == 200)
